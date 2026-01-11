@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
-import HomePage from './HomePage';
-import pokemonReducer from '@/store/PokemonSlice';
+import HomePage from './home-page';
+import pokemonReducer from '@/store/pokemon-slice';
 
 describe('HomePage', () => {
 	const createMockStore = (initialState = {}) => {
@@ -65,4 +65,3 @@ describe('HomePage', () => {
 		expect(screen.getByText(/Error:/)).toBeInTheDocument();
 	});
 });
-

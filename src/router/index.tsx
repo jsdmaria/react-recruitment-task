@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 
-import HomePage from '@/containers/HomePage/HomePage';
-import PokemonDetailsPage from '@/containers/PokemonDetailsPage/PokemonDetailsPage';
+import HomePage from '@/containers/home-page/home-page';
+import PokemonDetailsPage from '@/containers/pokemon-details-page/pokemon-details-page';
 
 export const routes = [
 	{

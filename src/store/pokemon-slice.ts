@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
 	POKEMONS_PER_PAGE,
 	FIRST_GENERATION_POKEMON_COUNT,
-} from '@/constants/Pokemon.consts';
-import { fetchPokemons, fetchPokemonDetails } from './PokemonThunks';
+} from '@/constants/pokemon.consts';
+import { fetchPokemons, fetchPokemonDetails } from './pokemon-thunks';
 
 interface PokemonState extends IBaseState {
 	pokemons: IPokemonListItem[];
@@ -67,4 +67,3 @@ const pokemonSlice = createSlice({
 
 export const { setCurrentPage, clearSelectedPokemon } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
-

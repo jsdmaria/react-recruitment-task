@@ -1,10 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import pokemonService from '@/api/PokemonService';
+
+import pokemonService from '@/api/pokemon-service';
+
+import { getPokemonImageUrl } from '@/utils/pokemon-image';
+
 import {
 	POKEMONS_PER_PAGE,
 	FIRST_GENERATION_POKEMON_COUNT,
-} from '@/constants/Pokemon.consts';
-import { getPokemonImageUrl } from '@/utils/PokemonImage';
+} from '@/constants/pokemon.consts';
 
 export const fetchPokemons = createAsyncThunk(
 	'pokemon/fetchPokemons',
@@ -67,4 +70,3 @@ export const fetchPokemonDetails = createAsyncThunk(
 		return response.data;
 	}
 );
-

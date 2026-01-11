@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 import { routes } from '@/router';
-import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from '@/components/error-boundaries/error-boundaries';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

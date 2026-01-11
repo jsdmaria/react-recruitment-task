@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import PokemonCard from '@/components/PokemonCard/PokemonCard';
+import PokemonCard from '@/components/pokemon-card/pokemon-card';
 
 describe('PokemonCard', () => {
 	const mockPokemon: IPokemonListItem = {
@@ -33,4 +33,3 @@ describe('PokemonCard', () => {
 		expect(link).toHaveAttribute('href', '/pokemon/1');
 	});
 });
-

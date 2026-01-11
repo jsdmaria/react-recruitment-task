@@ -1,6 +1,6 @@
-import HttpClient from '@/utils/HttpClient';
+import HttpClient from '@/utils/http-client';
 
-import { POKEMON_API_BASE_URL } from '@/constants/Pokemon.consts';
+import { POKEMON_API_BASE_URL } from '@/constants/pokemon.consts';
 
 const httpClient = new HttpClient(POKEMON_API_BASE_URL);
 
