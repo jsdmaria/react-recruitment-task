@@ -4,11 +4,13 @@ interface PokemonDataTableItem {
 }
 
 const PokemonDataTable = ({ data }: { data: PokemonDataTableItem[] }) => (
-	<table className="w-full md:w-[200px]">
+	<table className="w-full md:min-w-[200px]" aria-label="Pokemon details">
 		<tbody>
 			{data.map((item) => (
 				<tr key={item.name}>
-					<th className="font-normal text-left">{item.name}:</th>
+					<th scope="row" className="font-normal text-left">
+						{item.name}:
+					</th>
 					<td className="text-right">{item.value}</td>
 				</tr>
 			))}

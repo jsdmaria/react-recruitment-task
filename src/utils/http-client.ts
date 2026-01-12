@@ -9,31 +9,21 @@ class HttpClient {
 		this.baseUrl = baseUrl;
 	}
 
-	private buildUrl(
+	async get<T>(
 		endpoint: string,
-		params?: Record<string, string | number>
-	): string {
+		options?: RequestOptions
+	): Promise<IBaseResponse<T>> {
 		const fullUrl = `${this.baseUrl}${endpoint}`;
 		const url = new URL(fullUrl);
 
-		if (params) {
-			Object.entries(params).forEach(([key, value]) => {
+		if (options?.params) {
+			Object.entries(options.params).forEach(([key, value]) => {
 				url.searchParams.append(key, String(value));
 			});
 		}
 
-		return url.toString();
-	}
-
-	private async request<T>(
-		endpoint: string,
-		options?: RequestOptions
-	): Promise<IBaseResponse<T>> {
-		const { params } = options || {};
-		const url = this.buildUrl(endpoint, params);
-
 		try {
-			const response = await fetch(url, {
+			const response = await fetch(url.toString(), {
 				method: 'GET',
 				mode: 'cors',
 			});
@@ -43,10 +33,12 @@ class HttpClient {
 					message: response.statusText,
 				}));
 
-				throw new Error(
-					errorData.message ||
-						`API Error: ${response.status} ${response.statusText}`
-				);
+				return {
+					success: false,
+					message:
+						errorData.message ||
+						`API Error: ${response.status} ${response.statusText}`,
+				};
 			}
 
 			const data = await response.json();
@@ -56,23 +48,14 @@ class HttpClient {
 				data,
 			};
 		} catch (error) {
-			const message =
-				error instanceof Error
-					? error.message
-					: 'Unknown error occurred';
-
 			return {
 				success: false,
-				message,
+				message:
+					error instanceof Error
+						? error.message
+						: 'Unknown error occurred',
 			};
 		}
-	}
-
-	async get<T>(
-		endpoint: string,
-		options?: RequestOptions
-	): Promise<IBaseResponse<T>> {
-		return this.request<T>(endpoint, options);
 	}
 }
 

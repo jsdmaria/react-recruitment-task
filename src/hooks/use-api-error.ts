@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
 
-import { handleApiError } from '@/utils/error-handler';
+import { toast } from 'react-toastify';
 
 export const useApiError = (error: string | null) => {
 	useEffect(() => {
 		if (error) {
-			handleApiError(error);
+			toast.error(error, {
+				position: 'top-right',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+			});
 		}
 	}, [error]);
 };
-

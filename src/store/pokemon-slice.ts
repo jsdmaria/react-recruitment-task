@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { fetchPokemons, fetchPokemonDetails } from '@/store/pokemon-thunks';
+
 import {
 	POKEMONS_PER_PAGE,
 	FIRST_GENERATION_POKEMON_COUNT,
 } from '@/constants/pokemon.consts';
-import { fetchPokemons, fetchPokemonDetails } from '@/store/pokemon-thunks';
 
 interface PokemonState extends IBaseState {
 	pokemons: IPokemonListItem[];
@@ -37,6 +39,7 @@ const pokemonSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
+			// Fetch Pokemons status handlers
 			.addCase(fetchPokemons.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;
@@ -50,6 +53,7 @@ const pokemonSlice = createSlice({
 				state.isLoading = false;
 				state.error = action.payload as string;
 			})
+			// Fetch Pokemon Details status handlers
 			.addCase(fetchPokemonDetails.pending, (state) => {
 				state.isLoading = true;
 				state.error = null;

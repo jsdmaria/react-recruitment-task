@@ -9,7 +9,7 @@ export const App = () => {
 
 	return (
 		<ErrorBoundary>
-			<div className="app h-full flex flex-col overflow-hidden">
+			<main className="h-full flex flex-col overflow-hidden">
 				{element}
 				<ToastContainer
 					position="top-right"
@@ -22,7 +22,7 @@ export const App = () => {
 					draggable
 					pauseOnHover
 				/>
-			</div>
+			</main>
 		</ErrorBoundary>
 	);
 };

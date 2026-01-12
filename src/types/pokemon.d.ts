@@ -6,5 +6,22 @@ declare global {
 		name: string;
 		image: string;
 	}
-}
 
+	interface IPokemon {
+		id: number;
+		name: string;
+		height: number;
+		weight: number;
+		types: Array<{
+			type: {
+				name: string;
+			};
+		}>;
+		stats: Array<{
+			base_stat: number;
+			stat: {
+				name: string;
+			};
+		}>;
+	}
+}
