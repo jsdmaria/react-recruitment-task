@@ -10,14 +10,14 @@ const PokemonCard = ({ id, name, image }: PokemonCardProps) => {
 	return (
 		<Link
 			to={`/pokemon/${id}`}
-			className="block w-full border-2 border-black p-3 hover:border-green-500 transition-colors duration-100 hover:shadow-lg"
+			className="group block w-full border-2 border-black p-3 hover:border-green-500/80 transition-colors duration-100 hover:shadow-lg"
 		>
-			<div className="flex flex-col items-center justify-between h-full">
+			<div className="flex flex-col items-center justify-between h-full gap-3">
 				{image ? (
 					<img
 						src={image}
 						alt={name}
-						className="size-[100px] object-contain"
+						className="size-[100px] object-contain group-hover:scale-105 transition-transform duration-100"
 						loading="lazy"
 						onError={(e) => {
 							console.error(
@@ -31,7 +31,7 @@ const PokemonCard = ({ id, name, image }: PokemonCardProps) => {
 						<span className="text-gray-400">No image provided</span>
 					</div>
 				)}
-				<div className="w-fit px-1 pb-0.5 flex items-center justify-center bg-primary-100 rounded">
+				<div className="w-fit px-1 pb-0.5 flex items-center justify-center bg-primary-100 group-hover:bg-green-500/40 rounded transition-colors duration-100">
 					<h2 className="text-sm font-semibold capitalize text-center text-primary-400 m-0">
 						{name || `Pokemon #${id}`}
 					</h2>

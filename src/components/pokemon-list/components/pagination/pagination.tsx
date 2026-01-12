@@ -1,6 +1,9 @@
 import { memo } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-import PaginationButton from '@/components/pokemon-list/components/pagination-button/pagination-button';
+import PaginationButton, {
+	PAGINATION_BUTTON_STYLES,
+} from '@/components/pokemon-list/components/pagination-button/pagination-button';
 
 interface PaginationProps {
 	currentPage: number;
@@ -10,12 +13,25 @@ interface PaginationProps {
 
 const Pagination = memo(
 	({ currentPage, totalPages, onPageChange }: PaginationProps) => {
+		const isLastPage = currentPage === totalPages;
 		if (totalPages <= 1) return null;
 
 		return (
 			<nav className="flex justify-center mt-8" aria-label="Pagination">
 				<ul className="flex gap-2">
-					{/* Previous */}
+					{/* First page */}
+					<li>
+						<PaginationButton
+							onClick={() => onPageChange(1)}
+							disabled={currentPage === 1}
+							aria-disabled={currentPage === 1}
+							aria-label="Previous page"
+						>
+							&lt;&lt;
+						</PaginationButton>
+					</li>
+
+					{/* Previous page */}
 					<li>
 						<PaginationButton
 							onClick={() => onPageChange(currentPage - 1)}
@@ -26,36 +42,36 @@ const Pagination = memo(
 							&lt;
 						</PaginationButton>
 					</li>
-					<>...</>
-					{/* Pages */}
-					{Array.from({ length: totalPages }, (_, i) => {
-						const page = i + 1;
-						const isActive = page === currentPage;
 
-						return (
-							<li key={page}>
-								<PaginationButton
-									type="button"
-									onClick={() => onPageChange(page)}
-									aria-current={isActive ? 'page' : undefined}
-									aria-label={`Page ${page}`}
-									isActive={isActive}
-								>
-									{page}
-								</PaginationButton>
-							</li>
-						);
-					})}
-					<>...</>
-					{/* Next */}
+					{/* Current page */}
+					<li
+						className={twMerge(
+							PAGINATION_BUTTON_STYLES,
+							'font-bold bg-primary-400 text-white'
+						)}
+					>
+						<span className="text-xs md:text-sm">
+							{currentPage} of {totalPages}
+						</span>
+					</li>
+
+					{/* Next page */}
 					<li>
 						<PaginationButton
+							disabled={isLastPage}
 							onClick={() => onPageChange(currentPage + 1)}
-							disabled={currentPage === totalPages}
-							aria-disabled={currentPage === totalPages}
-							aria-label="Next page"
 						>
 							&gt;
+						</PaginationButton>
+					</li>
+
+					{/* Last page */}
+					<li>
+						<PaginationButton
+							disabled={isLastPage}
+							onClick={() => onPageChange(totalPages)}
+						>
+							&gt;&gt;
 						</PaginationButton>
 					</li>
 				</ul>
