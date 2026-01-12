@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 import PaginationButton, {
 	PAGINATION_BUTTON_STYLES,
-} from '@/components/pokemon-list/components/pagination-button/pagination-button';
+} from '@/components/pagination-button/pagination-button';
 
 interface PaginationProps {
 	currentPage: number;

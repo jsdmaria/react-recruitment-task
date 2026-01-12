@@ -67,6 +67,15 @@ export const fetchPokemonDetails = createAsyncThunk(
 			);
 		}
 
-		return response.data;
+		const { name, stats, types, height, weight } = response.data;
+
+		return {
+			name,
+			stats,
+			types,
+			height,
+			weight,
+			image: getPokemonImageUrl(id),
+		};
 	}
 );

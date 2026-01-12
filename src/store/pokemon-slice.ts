@@ -3,7 +3,7 @@ import {
 	POKEMONS_PER_PAGE,
 	FIRST_GENERATION_POKEMON_COUNT,
 } from '@/constants/pokemon.consts';
-import { fetchPokemons, fetchPokemonDetails } from './pokemon-thunks';
+import { fetchPokemons, fetchPokemonDetails } from '@/store/pokemon-thunks';
 
 interface PokemonState extends IBaseState {
 	pokemons: IPokemonListItem[];
@@ -56,7 +56,7 @@ const pokemonSlice = createSlice({
 			})
 			.addCase(fetchPokemonDetails.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.selectedPokemon = action.payload;
+				state.selectedPokemon = action.payload as IPokemon;
 			})
 			.addCase(fetchPokemonDetails.rejected, (state, action) => {
 				state.isLoading = false;

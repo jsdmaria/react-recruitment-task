@@ -1,5 +1,5 @@
 import Heading from '@/components/heading/heading';
-import PokemonList from '@/components/pokemon-list/pokemon-list';
+import PokemonList from '@/containers/home-page/components/pokemon-list/pokemon-list';
 
 const HomePage = () => {
 	return (

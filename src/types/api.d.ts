@@ -13,6 +13,7 @@ declare global {
 		base_experience: number;
 		height: number;
 		weight: number;
+		image: string;
 		sprites: {
 			front_default: string;
 			other?: {
@@ -39,4 +40,3 @@ declare global {
 		}>;
 	}
 }
-

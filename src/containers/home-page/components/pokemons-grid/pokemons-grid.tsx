@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import PokemonCard from '@/components/pokemon-card/pokemon-card';
+import PokemonCard from '@/containers/home-page/components/pokemon-card/pokemon-card';
 
 interface PokemonGridProps {
 	pokemons: IPokemonListItem[];

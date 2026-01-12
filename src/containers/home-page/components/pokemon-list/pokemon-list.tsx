@@ -1,13 +1,14 @@
 import { useEffect, useCallback, useMemo } from 'react';
 
-import PokemonGrid from '@/components/pokemon-list/components/pokemon-grid/pokemon-grid';
-import Pagination from '@/components/pokemon-list/components/pagination/pagination';
+import PokemonsGrid from '@/containers/home-page/components/pokemons-grid/pokemons-grid';
+import Pagination from '@/components/pagination/pagination';
+import Loading from '@/components/loading/loading';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchPokemons } from '@/store/pokemon-thunks';
 import { setCurrentPage } from '@/store/pokemon-slice';
 
-import { handleApiError } from '@/utils/error-handler';
+import { useApiError } from '@/hooks/use-api-error';
 
 const PokemonList = () => {
 	const dispatch = useAppDispatch();
@@ -19,11 +20,7 @@ const PokemonList = () => {
 		dispatch(fetchPokemons(currentPage));
 	}, [dispatch, currentPage]);
 
-	useEffect(() => {
-		if (error) {
-			handleApiError(error);
-		}
-	}, [error]);
+	useApiError(error);
 
 	const handlePageChange = useCallback(
 		(page: number) => {
@@ -44,13 +41,7 @@ const PokemonList = () => {
 	return (
 		<div className="flex flex-col flex-1 min-h-0">
 			<div className="flex-1 overflow-y-auto relative custom-scroll">
-				{isLoading ? (
-					<div className="absolute inset-0 flex justify-center items-center z-10">
-						<p className="text-lg">Loading...</p>
-					</div>
-				) : (
-					<PokemonGrid pokemons={pokemons} />
-				)}
+				{isLoading ? <Loading /> : <PokemonsGrid pokemons={pokemons} />}
 			</div>
 			<div className="flex-shrink-0 mb-1">
 				<Pagination {...paginationProps} />
