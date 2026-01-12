@@ -9,7 +9,7 @@ export const App = () => {
 
 	return (
 		<ErrorBoundary>
-			<div className="app">
+			<div className="app h-full flex flex-col overflow-hidden">
 				{element}
 				<ToastContainer
 					position="top-right"

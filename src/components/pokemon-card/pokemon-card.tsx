@@ -10,8 +10,7 @@ const PokemonCard = ({ id, name, image }: PokemonCardProps) => {
 	return (
 		<Link
 			to={`/pokemon/${id}`}
-			className="block w-full border-2 border-black p-3 hover:scale-105 transition-transform duration-300 hover:shadow-lg
-              sm:w-[46%] md:w-[30%] lg:w-[210px] h-[162px] flex-shrink-0"
+			className="block w-full border-2 border-black p-3 hover:border-green-500 transition-colors duration-100 hover:shadow-lg"
 		>
 			<div className="flex flex-col items-center justify-between h-full">
 				{image ? (
