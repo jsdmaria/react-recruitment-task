@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"jsx": "react-jsx",
+		"baseUrl": "src",
+		"paths": {
+			"@/*": ["*"]
+		},
+		"types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
+	},
+	"include": ["src", "vite-env.d.ts"],
+	"references": [{ "path": "./tsconfig.node.json" }]
+}
