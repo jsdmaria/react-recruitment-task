@@ -24,4 +24,8 @@ declare global {
 			};
 		}>;
 	}
+
+	interface IPokemonWithImage extends IPokemon {
+		image: string;
+	}
 }

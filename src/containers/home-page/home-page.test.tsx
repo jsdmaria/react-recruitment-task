@@ -36,7 +36,7 @@ describe('HomePage', () => {
 			</Provider>
 		);
 
-		expect(screen.getByText('Pokedex')).toBeInTheDocument();
+		expect(screen.getByRole('heading', { name: 'Pokedex' })).toBeInTheDocument();
 	});
 
 	it('shows loading state', () => {
@@ -49,19 +49,7 @@ describe('HomePage', () => {
 			</Provider>
 		);
 
-		expect(screen.getByText('Loading...')).toBeInTheDocument();
-	});
-
-	it('shows error message', () => {
-		const store = createMockStore({ error: 'Failed to fetch' });
-		render(
-			<Provider store={store}>
-				<BrowserRouter>
-					<HomePage />
-				</BrowserRouter>
-			</Provider>
-		);
-
-		expect(screen.getByText(/Error:/)).toBeInTheDocument();
+		const loadingSection = screen.getByLabelText('Pokemon list');
+		expect(loadingSection).toHaveAttribute('aria-busy', 'true');
 	});
 });

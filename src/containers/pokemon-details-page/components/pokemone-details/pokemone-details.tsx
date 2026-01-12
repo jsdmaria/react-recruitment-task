@@ -8,10 +8,10 @@ import { getPokemonData } from '@/containers/pokemon-details-page/pokemon-detail
 const PokemoneDetails = ({
 	selectedPokemon,
 }: {
-	selectedPokemon: IPokemon;
+	selectedPokemon: IPokemonWithImage;
 }) => {
 	const pokemonData = useMemo(
-		() => getPokemonData(selectedPokemon as IPokemon),
+		() => getPokemonData(selectedPokemon as IPokemonWithImage),
 		[selectedPokemon]
 	);
 

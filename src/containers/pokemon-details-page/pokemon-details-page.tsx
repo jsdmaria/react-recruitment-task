@@ -49,7 +49,9 @@ const PokemonDetailsPage = () => {
 				{isLoading ? (
 					<Loading />
 				) : selectedPokemon ? (
-					<PokemoneDetails selectedPokemon={selectedPokemon} />
+					<PokemoneDetails
+						selectedPokemon={selectedPokemon as IPokemonWithImage}
+					/>
 				) : (
 					<p role="alert">Pokemon not found</p>
 				)}

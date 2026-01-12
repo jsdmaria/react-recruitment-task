@@ -19,7 +19,7 @@ describe('PokemonCard', () => {
 		);
 
 		expect(screen.getByText('bulbasaur')).toBeInTheDocument();
-		expect(screen.getByAltText('bulbasaur')).toBeInTheDocument();
+		expect(screen.getByAltText('bulbasaur image')).toBeInTheDocument();
 	});
 
 	it('has correct link to pokemon details', () => {

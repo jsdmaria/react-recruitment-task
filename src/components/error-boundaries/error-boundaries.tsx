@@ -19,6 +19,7 @@ class ErrorBoundary extends Component<Props, State> {
 		};
 	}
 
+	// Get the error state from the error boundary
 	static getDerivedStateFromError(error: Error): State {
 		return {
 			hasError: true,
@@ -26,10 +27,12 @@ class ErrorBoundary extends Component<Props, State> {
 		};
 	}
 
+	// Catch the error and log it to the console
 	componentDidCatch(error: Error, errorInfo: ErrorInfo) {
 		console.error('ErrorBoundary caught an error:', error, errorInfo);
 	}
 
+	// Render the fallback UI if an error occurs
 	render() {
 		if (this.state.hasError) {
 			if (this.props.fallback) {
@@ -48,9 +51,9 @@ class ErrorBoundary extends Component<Props, State> {
 					)}
 					<button
 						onClick={() => window.location.reload()}
-						className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+						className="px-4 py-2 bg-green-500 text-white hover:bg-green-500"
 					>
-						Reload Page
+						Reload the page
 					</button>
 				</div>
 			);
